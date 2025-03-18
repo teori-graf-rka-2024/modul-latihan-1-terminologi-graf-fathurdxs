@@ -1,18 +1,24 @@
-import graph as g
+import graph
 
-print("Grafik yang di inisialisasi:")
-grafik = g.create_graph([(0, 5), (0, 4), (0, 2), (1, 5), (1, 4), (2, 4), (2, 3), (4, 5)])
+def test_graph_functions():
+    edges = [(1, 2), (1, 3), (2, 4), (3, 4), (4, 5)]
+    G = graph.create_graph(edges)
+    
+    print("\nDerajat simpul:")
+    for node in range(1, 6):
+        print(f"Node {node}: {graph.get_degree(G, node)}")
+    
+    print("\nDFS Traversal dari simpul 1:")
+    print(graph.dfs_traversal(G, 1))
+    
+    print("\nBFS Traversal dari simpul 1:")
+    print(graph.bfs_traversal(G, 1))
+    
+    print("\nJalur Terpendek dari 1 ke 5:")
+    print(graph.find_shortest_path(G, 1, 5))
+    
+    print("\nVisualisasi Graf:")
+    graph.visualize_graph(G)
 
-print("derajat dari vertex 1:")
-g.get_degree(grafik, 1)
-
-print("dfs dengan stack(start node=5):")
-g.dfs_traversal(grafik, 5)
-
-print("bfs dengan queue(start node=0):")
-g.bfs_traversal(grafik, 0)
-
-print("mencari path terpendek dari vertex 2 ke 4:")
-g.find_shortest_path(grafik, 2, 4)
-
-g.visualize_graph(grafik)
+if __name__ == "__main__":
+    test_graph_functions()
